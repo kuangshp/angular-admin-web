@@ -6,7 +6,7 @@
         <div style="margin:0;" [ngClass]="{'tab-home':i===0}">
           <i *ngIf="tab.icon!==''" nz-icon [nzType]="tab.icon" [ngClass]="tab.icon"></i>
           {{ tab.name }}
-          <i *ngIf="i>0" nz-icon type="close" class="ant-tabs-close-x" (click)="closeTabNav(tab)"></i>
+          <!-- <i *ngIf="i>0" nz-icon type="close" class="ant-tabs-close-x" (click)="closeTabNav(tab)"></i> -->
         </div>
       </ng-template>
     </nz-tab>
