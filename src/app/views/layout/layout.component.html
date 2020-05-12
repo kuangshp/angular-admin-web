@@ -1,0 +1,45 @@
+<nz-layout class="layout">
+  <!-- 头部 -->
+  <nz-header class="header">
+    <app-header></app-header>
+  </nz-header>
+  <!-- 内容区域 -->
+  <nz-layout class="content">
+    <!-- 左侧导航 -->
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+      <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed" style="height: calc(100% - 40px);overflow: auto;">
+        <!-- 循环生成左侧导航开始 -->
+        <ng-container *ngFor="let menu of menusList">
+          <!-- 一级菜单(没有子菜单的) -->
+          <li nz-menu-item *ngIf="!menu.children || menu.children.length == 0" (click)="selectedMenu(menu)">
+            <i nz-icon [nzType]="menu.icon ? menu.icon : 'folder'"></i>
+            <span>{{menu.name}}</span>
+          </li>
+          <!-- 一级菜单(有子菜单的) -->
+          <li nz-submenu *ngIf="menu.children && menu.children.length" [nzTitle]="menu.name"
+            [nzIcon]="menu.icon ? menu.icon : 'folder'">
+            <ul>
+              <li nz-menu-item nzMatchRouter *ngFor="let item of menu.children" (click)="selectedMenu(item)">
+                <i nz-icon [nzType]="item.icon ? item.icon : 'file'"></i>
+                <span>{{item.name}}</span>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+        <!-- 循环生成左侧导航结束 -->
+      </ul>
+    </nz-sider>
+    <!-- 右侧内容区域开始 -->
+    <nz-layout>
+      <!-- 选项卡导航 -->
+      <app-tabset [sourceMenus]="sourceMenus" *ngIf="sourceMenus"></app-tabset>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet [ngStyle]="{'height':'100%'}"></router-outlet>
+        </div>
+      </nz-content>
+      <!-- 右侧内容区域结束 -->
+      <!-- <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer> -->
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

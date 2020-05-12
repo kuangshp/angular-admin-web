@@ -1,0 +1,37 @@
+.layout{
+  width: 100vw;
+  height: 100vh;
+  nz-header {
+    background: #fff;
+    padding: 0;
+  }
+  .content{
+    overflow: hidden;
+  }
+  nz-content {
+    margin: 0 16px;
+  }
+  nz-sider{
+    height: 100vh;
+    background: #fff;
+    .ant-menu-item {
+      a {
+        display: inline;
+      }
+    }
+    span{
+      outline: none;
+    }
+  }
+  .inner-content {
+    padding: 24px;
+    background: #fff;
+    min-height: 360px;
+    height: 100%;
+    overflow: auto;
+  }
+
+  nz-footer {
+    text-align: center;
+  }
+}

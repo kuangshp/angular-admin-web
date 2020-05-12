@@ -1,0 +1,69 @@
+<div class="login">
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="6"></div>
+    <div nz-col nzSpan="12" class="login-col">
+      <div class="login-panel">
+        <div class="login-log"></div>
+        <form nz-form [formGroup]="loginValidateForm" class="login-form" role="loginValidateForm"
+          (ngSubmit)="submitForm(loginValidateForm, $event)">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="mobileErrorTpl">
+              <nz-input-group nzPrefixIcon="user">
+                <input type="text" nz-input formControlName="mobile" placeholder="Please enter mobile" />
+              </nz-input-group>
+              <ng-template #mobileErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('mobile')">
+                  Wrong phone number format!
+                </ng-container>
+                <ng-container *ngIf="control.hasError('required')">
+                  please enter the mobile!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="passwordErrorTpl">
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input formControlName="passwd" placeholder="Please enter password" />
+              </nz-input-group>
+              <ng-template #passwordErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('password')">
+                  Password format error!
+                </ng-container>
+                <ng-container *ngIf="control.hasError('required')">
+                  please enter the password!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="codeErrorTpl">
+              <nz-input-group nzSearch [nzAddOnAfter]="suffixButton">
+                <input type="text" nz-input formControlName="code" placeholder="please enter code" />
+              </nz-input-group>
+              <ng-template #suffixButton>
+                <button nz-button nzType="primary" nzSearch (click)="getCode($event);$event.stopPropagation();"
+                  [disabled]="disabledSMS">{{smsBtnText}}</button>
+              </ng-template>
+              <ng-template #codeErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('code')">
+                  It has to be four digits!
+                </ng-container>
+                <ng-container *ngIf="control.hasError('required')">
+                  please enter the code!
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control>
+              <button nz-button class="login-form-button" [nzType]="'primary'"
+                [disabled]="!loginValidateForm.valid">Login</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+    </div>
+    <div nz-col nzSpan="6"></div>
+  </div>
+</div>
