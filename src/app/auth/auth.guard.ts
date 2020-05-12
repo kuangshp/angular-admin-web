@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log(next, state);
     // let url: string = state.url;
+    // 这个地方可以进一步判断是否有权限
     return this.checkLogin();
   }
   /**
