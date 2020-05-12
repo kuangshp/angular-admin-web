@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     this.store$.pipe(select('isCollapsed' as any), select(getCurrentCollapsed)).subscribe(item => {
       this.isCollapsed = item;
     });
-    this.username = JSON.parse(storage.getItem(userInfo)).email;
+    this.username = JSON.parse(storage.getItem(userInfo)).username;
   }
 
   toggleMenu(): void {

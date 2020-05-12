@@ -7,7 +7,7 @@ export default {
       name: '文件中心',
       parentId: -1,
       sort: 1,
-      url: '/file',
+      url: 'file',
       icon: 'file',
     },
     {
@@ -47,7 +47,7 @@ export default {
       name: '设置',
       parentId: -1,
       sort: 6,
-      url: '/setting',
+      url: 'setting',
       icon: 'setting',
     },
   ],

@@ -29,6 +29,16 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         loadChildren: () => import('./views/setting/setting.module').then(res => res.SettingModule)
       },
+      {
+        path: 'file',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import('./views/files/files.module').then(res => res.FilesModule)
+      },
+      {
+        path: 'system',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import('./views/system/system.module').then(res => res.SystemModule)
+      },
 
     ]
   },

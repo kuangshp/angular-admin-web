@@ -4,6 +4,7 @@
     "ncre",
     "ngrx",
     "tabnav",
-    "tabset"
+    "tabset",
+    "usergroup"
   ]
 }

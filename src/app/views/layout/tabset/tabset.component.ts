@@ -76,6 +76,7 @@ export class TabsetComponent implements OnInit {
       });
     }
     // this.router.navigate(['/home']);
+    // 刷新到最后一个table页面
     this.lastTab();
   }
 
@@ -126,7 +127,7 @@ export class TabsetComponent implements OnInit {
   // 刷新浏览器的时候保留最后一个访问地址
   lastTab(): void {
     const currentUrl = this.router.url;
-    const urlPathObj = this.sourceMenus.find(m => m.url.replace('.', '/') === currentUrl.substring(1));
+    const urlPathObj = this.sourceMenus.find(m => m.url === currentUrl.substring(1));
     if (urlPathObj) {
       this.tabsList.push(Object.assign(urlPathObj, { select: true, close: true, index: 1 }));
       this.currentSelectedIndex = 1;
