@@ -3,22 +3,21 @@
   width: 100vw;
   height: 100vh;
   background-color:#2680ca;
-  background-image: url('/assets/images/login_bg.svg');
+  background-image: url('/assets/images/login_page.png');
   background-repeat: no-repeat;
-  background-position: center 30%;
-  background-size: 35%;
+  background-size: cover;
+  background-position: center center;
   position: relative;
   .login-col{
     height: 100vh;
   }
   .login-panel{
-    width: 370px;
-    height: 350px;
+    width: 450px;
+    height: 400px;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: -2rem;
     margin: auto;
     background: #ffffff;
     border-radius: 10px;
@@ -26,12 +25,12 @@
     box-shadow: 0 1px 2px rgba(0,0,0,.05);
     padding:2rem;
     .login-log{
-      height: 50px;
+      width: 100px;
+      height: 100px;
+      background: #2680ca;
+      border-radius: 50%;
       margin: 0 auto 20px;
-      background: url('/assets/images/login_log.png');
-      background-repeat: no-repeat;
-      background-position: 50%;
-      background-size: 60%;
+      cursor: pointer;
     }
     .login-form {
       max-width: 100%;
