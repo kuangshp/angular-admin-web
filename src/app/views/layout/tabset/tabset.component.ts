@@ -68,7 +68,7 @@ export class TabsetComponent implements OnInit {
         id: '0',
         index: 0,
         enabled: true,
-        name: 'home',
+        name: '首页',
         close: false,
         icon: 'home',
         url: 'home',
@@ -132,7 +132,7 @@ export class TabsetComponent implements OnInit {
       this.currentSelectedIndex = 1;
       window.document.title = urlPathObj.name;
     } else {
-      window.document.title = 'home';
+      window.document.title = '首页';
     }
   }
 }

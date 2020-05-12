@@ -19,7 +19,7 @@ const routes: Routes = [
       {
         path: 'home',
         data: {
-          title: 'home',
+          title: '首页',
         },
         canActivateChild: [AuthGuard],
         loadChildren: () => import('./views/home/home.module').then(res => res.HomeModule)
