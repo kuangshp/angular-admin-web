@@ -1,6 +1,6 @@
 export const environment = {
-  production: true,
-  baseUrl: '',
+  production: false,
+  baseUrl: 'http://uat',
   ignoreToken: ['login', 'logout'],
   parentId: 'ncre-web',
 };
