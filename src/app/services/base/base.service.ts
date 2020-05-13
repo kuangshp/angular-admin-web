@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { timeout } from 'rxjs/operators';
 import { fileObjectField, trimObject, urlObjectParams } from '@app/utils';
-
-interface IobjectType {
-  [propsName: string]: any;
-}
+import { ObjectType } from '@app/types';
+import { HTTP_TIMEOUT } from '@app/config';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +23,8 @@ export class BaseService {
     url: string,
     urlParams?: any,
     options?: {
-      params?: IobjectType;
-      headers?: IobjectType;
+      params?: ObjectType;
+      headers?: ObjectType;
       responseType?: any;
     }
   ): Observable<any> {
@@ -41,7 +40,7 @@ export class BaseService {
       headers: $headers,
       params: $params,
       responseType
-    });
+    }).pipe(timeout(HTTP_TIMEOUT));
   }
 
   /**
@@ -54,8 +53,8 @@ export class BaseService {
     url: string,
     body: any | null,
     options?: {
-      params?: IobjectType;
-      headers?: IobjectType;
+      params?: ObjectType;
+      headers?: ObjectType;
     }
   ): Observable<any> {
     const { params, headers } = options || {
@@ -67,7 +66,7 @@ export class BaseService {
     return this.http.put(url, fileObjectField(trimObject(body)), {
       headers: $headers,
       params: $params
-    });
+    }).pipe(timeout(HTTP_TIMEOUT));
   }
 
   /**
@@ -80,8 +79,8 @@ export class BaseService {
     url: string,
     body?: any | null,
     options?: {
-      params?: IobjectType;
-      headers?: IobjectType;
+      params?: ObjectType;
+      headers?: ObjectType;
     }
   ): Observable<any> {
     const { params, headers } = options || { params: {}, headers: {} };
@@ -91,12 +90,12 @@ export class BaseService {
       return this.http.patch(url, fileObjectField(trimObject(body)), {
         headers: $headers,
         params: $params
-      });
+      }).pipe(timeout(HTTP_TIMEOUT));
     } else {
       return this.http.patch(url, {
         headers: $headers,
         params: $params
-      });
+      }).pipe(timeout(HTTP_TIMEOUT));
     }
   }
 
@@ -110,8 +109,8 @@ export class BaseService {
     url: string,
     body: any | null,
     options?: {
-      params?: IobjectType;
-      headers?: IobjectType;
+      params?: ObjectType;
+      headers?: ObjectType;
     }
   ): Observable<any> {
     const { params, headers } = options || { params: {}, headers: {} };
@@ -120,7 +119,7 @@ export class BaseService {
     return this.http.post(url, body, {
       headers: $headers,
       params: $params
-    });
+    }).pipe(timeout(HTTP_TIMEOUT));
   }
 
   /**
@@ -131,8 +130,8 @@ export class BaseService {
   public delete(
     url: string,
     options?: {
-      params?: IobjectType;
-      headers?: IobjectType;
+      params?: ObjectType;
+      headers?: ObjectType;
     }
   ): Observable<any> {
     const { params, headers } = options || { params: {}, headers: {} };
@@ -141,6 +140,6 @@ export class BaseService {
     return this.http.delete(url, {
       headers: $headers,
       params: $params
-    });
+    }).pipe(timeout(HTTP_TIMEOUT));
   }
 }
