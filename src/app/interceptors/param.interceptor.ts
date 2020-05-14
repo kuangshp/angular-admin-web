@@ -35,32 +35,24 @@ export class ParamInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // 处理url地址的问题
     const url = this._url(req.url);
-    // 过滤不需要token的请求
-    if (this.ignoreToken(req.url)) {
+    req = req.clone({
+      url,
+      headers: req.headers
+        .set('Content-Type', 'application/json; charset=UTF-8')
+    });
+    // 如果本地获取不到token就重定向到登录页面
+    if (!storage.getItem(X_USER_TOKEN)) {
+      console.log('没token跳转到登录页面');
+      this.router.navigateByUrl('/login');
+    } else {
+      // 设置请求头
       req = req.clone({
         url,
         headers: req.headers
+          .set(X_USER_TOKEN, JSON.parse(storage.getItem(X_USER_TOKEN)))
           .set(X_ORG_ID, '2')
           .set(X_ORIGIN, 'approval-web')
-          .set('Content-Type', 'application/json; charset=UTF-8')
       });
-    } else {
-      // 如果本地获取不到token就重定向到登录页面
-      if (!storage.getItem(X_USER_TOKEN)) {
-        console.log('没token跳转到登录页面');
-        this.router.navigateByUrl('/login');
-      } else {
-        // 设置请求头
-        req = req.clone({
-          url,
-          headers: req.headers
-            .set(X_USER_TOKEN, JSON.parse(storage.getItem(X_USER_TOKEN)))
-            .set(X_ORG_ID, '2')
-            .set(X_ORIGIN, 'approval-web')
-            .set(X_OPERATED_PRODUCT, 'YN-MAUCASH')
-            .set('Content-Type', 'application/json; charset=UTF-8')
-        });
-      }
     }
     return next.handle(req).pipe(
       tap(
@@ -109,21 +101,6 @@ export class ParamInterceptor implements HttpInterceptor {
         }
       )
     );
-  }
-
-  /**
-   * 忽视token的方法
-   * @param url 当前的url地址
-   */
-  public ignoreToken(url: string): boolean {
-    const ignoreToken = environment.ignoreToken;
-    let currentUrl = url.split('/').filter(item => Boolean(item)).join('/');
-    currentUrl = currentUrl.lastIndexOf('?') != -1 ? currentUrl.substring(0, currentUrl.lastIndexOf('?')) : currentUrl;
-    if (ignoreToken.includes(currentUrl)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   /**
