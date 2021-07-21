@@ -3,6 +3,7 @@
     "Parens",
     "commitlint",
     "devkit",
+    "sider",
     "stylelint"
   ],
   //全局使用保存自动格式化功能
