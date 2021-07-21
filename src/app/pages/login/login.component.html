@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="login">
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="12"></div>
+    <div nz-col nzSpan="12" class="login-col">
+      <div class="login-panel">
+        <div class="login-log"></div>
+        <form nz-form [formGroup]="loginValidateForm" class="login-form"
+          (ngSubmit)="submitForm(loginValidateForm, $event)">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="请输入用户名!">
+              <nz-input-group nzPrefixIcon="user">
+                <input type="text" nz-input formControlName="username" placeholder="请输入用户名/邮箱/手机号码" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="请输入密码!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input formControlName="password" placeholder="请输入密码" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control>
+              <button nz-button class="login-form-button" nzType="primary"
+                [disabled]="!loginValidateForm.valid">登录</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
