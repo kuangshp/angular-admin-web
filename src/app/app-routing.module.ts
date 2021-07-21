@@ -13,7 +13,12 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/welcome',
+        redirectTo: '/home',
+      },
+      {
+        path: 'home',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'welcome',
