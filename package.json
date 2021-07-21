@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -26,14 +27,31 @@
     "@angular-devkit/build-angular": "~12.1.2",
     "@angular/cli": "~12.1.2",
     "@angular/compiler-cli": "~12.1.2",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": ">=6",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "lint-staged": ">=10",
+    "prettier": "^2.3.2",
     "typescript": "~4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
