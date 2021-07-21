@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
+    "ng-zorro-antd": "^12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -60,7 +61,6 @@
       "git add"
     ],
     "*.{css,scss}": [
-      "stylelint src/**/*.css --fix",
       "stylelint src/**/*.scss --fix"
     ]
   }
