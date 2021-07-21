@@ -130,6 +130,15 @@
   dependencies:
     tslib "^2.2.0"
 
+"@angular/cdk@^12.1.0":
+  version "12.1.2"
+  resolved "https://registry.nlark.com/@angular/cdk/download/@angular/cdk-12.1.2.tgz#5c2407324d860737374d873bd4381bf7f90f8a61"
+  integrity sha1-XCQHMk2GBzc3TYc71Dgb9/kPimE=
+  dependencies:
+    tslib "^2.2.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~12.1.2":
   version "12.1.2"
   resolved "https://registry.nlark.com/@angular/cli/download/@angular/cli-12.1.2.tgz?cache=0&sync_timestamp=1626307417250&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40angular%2Fcli%2Fdownload%2F%40angular%2Fcli-12.1.2.tgz#31bedb867bbfec5cf49b18b0666077c25f8a8e41"
@@ -223,6 +232,21 @@
   integrity sha1-P7YxoqPGAZdZtXAnHQmkvTjHMew=
   dependencies:
     tslib "^2.2.0"
+
+"@ant-design/colors@^5.0.0":
+  version "5.1.1"
+  resolved "https://registry.nlark.com/@ant-design/colors/download/@ant-design/colors-5.1.1.tgz#800b2186b1e27e66432e67d03ed96af3e21d8940"
+  integrity sha1-gAshhrHifmZDLmfQPtlq8+IdiUA=
+  dependencies:
+    "@ctrl/tinycolor" "^3.3.1"
+
+"@ant-design/icons-angular@^12.0.3":
+  version "12.0.3"
+  resolved "https://registry.nlark.com/@ant-design/icons-angular/download/@ant-design/icons-angular-12.0.3.tgz?cache=0&sync_timestamp=1623207365818&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40ant-design%2Ficons-angular%2Fdownload%2F%40ant-design%2Ficons-angular-12.0.3.tgz#3e99aa99ceebb978384a2926d06da19c043fc4bd"
+  integrity sha1-Ppmqmc7ruXg4Sikm0G2hnAQ/xL0=
+  dependencies:
+    "@ant-design/colors" "^5.0.0"
+    tslib "^2.0.0"
 
 "@babel/code-frame@7.12.11":
   version "7.12.11"
@@ -1287,6 +1311,11 @@
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/@csstools/convert-colors/download/@csstools/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha1-rUldxBsS511YjG24uYNPCPoTHrc=
+
+"@ctrl/tinycolor@^3.3.1":
+  version "3.4.0"
+  resolved "https://registry.npm.taobao.org/@ctrl/tinycolor/download/@ctrl/tinycolor-3.4.0.tgz?cache=0&sync_timestamp=1612895880147&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ctrl%2Ftinycolor%2Fdownload%2F%40ctrl%2Ftinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
+  integrity sha1-w8WuVDyJfKqcKmhjC+01W+X5mQ8=
 
 "@discoveryjs/json-ext@0.5.3":
   version "0.5.3"
@@ -3108,6 +3137,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^2.10.0:
+  version "2.22.1"
+  resolved "https://registry.nlark.com/date-fns/download/date-fns-2.22.1.tgz#1e5af959831ebb1d82992bf67b765052d8f0efc4"
+  integrity sha1-Hlr5WYMeux2CmSv2e3ZQUtjw78Q=
 
 date-format@^2.1.0:
   version "2.1.0"
@@ -5943,6 +5977,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4, mkdirp@~1.0.4:
   resolved "https://registry.npm.taobao.org/mkdirp/download/mkdirp-1.0.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmkdirp%2Fdownload%2Fmkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha1-PrXtYmInVteaXw4qIh3+utdcL34=
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.npm.taobao.org/moment/download/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz?cache=0&sync_timestamp=1607433842694&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fms%2Fdownload%2Fms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6031,6 +6070,16 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npm.taobao.org/neo-async/download/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha1-tKr7k+OustgXTKU88WOrfXMIMF8=
+
+ng-zorro-antd@^12.0.1:
+  version "12.0.1"
+  resolved "https://registry.nlark.com/ng-zorro-antd/download/ng-zorro-antd-12.0.1.tgz#7f06e2f538f02aefc17ff307e9e19045997f066f"
+  integrity sha1-fwbi9TjwKu/Bf/MH6eGQRZl/Bm8=
+  dependencies:
+    "@angular/cdk" "^12.1.0"
+    "@ant-design/icons-angular" "^12.0.3"
+    date-fns "^2.10.0"
+    tslib "^2.2.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -6509,6 +6558,11 @@ parse5-sax-parser@^6.0.1:
   integrity sha1-mLTTZrWyZqfNkLS1iQZmeviC2ro=
   dependencies:
     parse5 "^6.0.1"
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.npm.taobao.org/parse5/download/parse5-5.1.1.tgz?cache=0&sync_timestamp=1595849263958&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fparse5%2Fdownload%2Fparse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha1-9o5OW6GFKsLK3AD0VV//bCq7YXg=
 
 parse5@^6.0.1:
   version "6.0.1"
