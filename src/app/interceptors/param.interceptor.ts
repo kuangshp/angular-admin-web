@@ -11,12 +11,12 @@ import { tap } from 'rxjs/operators';
 
 // 获取环境配置项目
 import { environment } from './../../environments/environment';
-import { storage } from '@app/utils';
-import { X_ORG_ID, X_ORIGIN, X_USER_TOKEN, X_USER_ID, X_OPERATED_PRODUCT } from '../config';
+import { X_ORG_ID, X_USER_TOKEN } from '../constants';
 import { Router } from '@angular/router';
-import { NzModalService, NzMessageService } from 'ng-zorro-antd';
-import { LoggerService } from '@app/services/tools/logger/logger.service';
-
+import { LoggerService } from '../services/tools/logger/logger.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { storage } from '../utils';
 @Injectable()
 export class ParamInterceptor implements HttpInterceptor {
   private baseUrl: string;
@@ -48,8 +48,7 @@ export class ParamInterceptor implements HttpInterceptor {
           url,
           headers: req.headers
             .set(X_USER_TOKEN, JSON.parse(storage.getItem(X_USER_TOKEN)))
-            .set(X_ORG_ID, '2')
-            .set(X_ORIGIN, 'approval-web'),
+            .set(X_ORG_ID, '2'),
         });
       }
     }
@@ -61,7 +60,7 @@ export class ParamInterceptor implements HttpInterceptor {
             const status = event.status;
             if (status >= 200 && status < 300) {
               const body = event.body;
-              const currentUrl = event.url;
+              const currentUrl: string = event.url ?? '';
               const { code, message } = body;
               if (!Object.is(code, 0)) {
                 // token失效跳转到登录页面
@@ -108,7 +107,7 @@ export class ParamInterceptor implements HttpInterceptor {
    * @param url 当前的url地址
    */
   public ignoreToken(url: string): boolean {
-    const ignoreToken = environment.ignoreToken;
+    const ignoreToken: string[] = environment.ignoreToken;
     let currentUrl = url
       .split('/')
       .filter((item) => Boolean(item))

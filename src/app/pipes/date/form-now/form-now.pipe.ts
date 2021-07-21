@@ -5,7 +5,7 @@ import moment from 'moment';
   name: 'formNow',
 })
 export class FormNowPipe implements PipeTransform {
-  transform(value: number, ...args: unknown[]): unknown {
+  transform(value: number, ..._: unknown[]): unknown {
     if (value) {
       return moment(value).fromNow();
     } else {

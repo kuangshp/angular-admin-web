@@ -25,7 +25,7 @@ export class LoggingInterceptor implements HttpInterceptor {
             status = 'succeeded';
           }
         },
-        (error) => (status = 'failed')
+        () => (status = 'failed')
       ),
       finalize(() => {
         const elapsedTime = Date.now() - startTime;
