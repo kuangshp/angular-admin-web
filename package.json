@@ -31,7 +31,11 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "husky": ">=6",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
@@ -41,6 +45,8 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "lint-staged": ">=10",
     "prettier": "^2.3.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
     "typescript": "~4.3.2"
   },
   "husky": {
@@ -52,6 +58,10 @@
     "*.{ts,css,md}": [
       "prettier --write",
       "git add"
+    ],
+    "*.{css,scss}": [
+      "stylelint src/**/*.css --fix",
+      "stylelint src/**/*.scss --fix"
     ]
   }
 }
