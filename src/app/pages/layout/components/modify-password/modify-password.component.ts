@@ -19,6 +19,7 @@ export class ModifyPasswordComponent implements OnInit {
     });
   }
 
+  /**点击提交按钮 */
   handleOk(): Promise<boolean> | boolean {
     if (this.validateForm.valid) {
       const postData = this.validateForm.value;
