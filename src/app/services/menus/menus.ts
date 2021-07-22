@@ -36,10 +36,10 @@ export default {
     },
     {
       id: 3,
-      name: '用户中心',
+      name: '账号管理',
       parentId: 2,
       sort: 3,
-      url: 'system/user',
+      url: 'system/account',
       icon: 'user',
     },
     {

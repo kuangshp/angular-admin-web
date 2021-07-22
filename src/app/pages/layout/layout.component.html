@@ -25,7 +25,7 @@
           <ul>
             <li nz-menu-item nzMatchRouter *ngFor="let item of menu.children">
               <i nz-icon [nzType]="item.icon ? item.icon : 'file'"></i>
-              <span><a [routerLink]="menu.url">{{menu.name}}</a></span>
+              <span><a [routerLink]="item.url">{{item.name}}</a></span>
             </li>
           </ul>
         </li>

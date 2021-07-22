@@ -20,8 +20,19 @@ const routes: Routes = [
         loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'welcome',
-        loadChildren: () => import('./pages/welcome/welcome.module').then((m) => m.WelcomeModule),
+        path: 'file',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import('./pages/file/file.module').then((m) => m.FileModule),
+      },
+      {
+        path: 'system',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import('./pages/system/system.module').then((m) => m.SystemModule),
+      },
+      {
+        path: 'setting',
+        canActivateChild: [AuthGuard],
+        loadChildren: () => import('./pages/setting/setting.module').then((m) => m.SettingModule),
       },
     ],
   },

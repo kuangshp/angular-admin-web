@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit {
       const { code, message, result } = response;
       if (Object.is(code, 0)) {
         this.menusList = getTreeList(result);
+        console.log(this.menusList, '格式化菜单后');
       } else {
         this.message.error(message);
       }
