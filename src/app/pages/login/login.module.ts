@@ -9,7 +9,6 @@ import { LoginComponent } from './login.component';
 
 @NgModule({
   declarations: [LoginComponent],
-  exports: [LoginComponent],
   imports: [SharedModule, LoginRoutingModule, NzFormModule, NzInputModule, NzButtonModule],
 })
 export class LoginModule {}
