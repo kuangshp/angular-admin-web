@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { MenusService } from 'src/app/services/menus/menus.service';
-import { IMenus } from 'src/app/utils';
+import { getTreeList, IMenus } from 'src/app/utils';
 import { MenusVo } from 'src/app/vo/menus/menus.vo';
 
 @Component({
@@ -26,7 +26,7 @@ export class LayoutComponent implements OnInit {
     this.menusService.menusApi().subscribe((response: MenusVo) => {
       const { code, message, result } = response;
       if (Object.is(code, 0)) {
-        console.log(result, '获取的菜单');
+        this.menusList = getTreeList(result);
       } else {
         this.message.error(message);
       }

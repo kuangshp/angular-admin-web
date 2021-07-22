@@ -12,7 +12,26 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <!-- 循环菜单列表开始 -->
+      <ng-container *ngFor="let menu of menusList">
+        <!-- 一级菜单(没有子菜单的) -->
+        <li nz-menu-item nzMatchRouter *ngIf="!menu.children || menu.children.length == 0">
+          <i nz-icon [nzType]="menu.icon ? menu.icon : 'folder'"></i>
+          <span>{{menu.name}}</span>
+        </li>
+        <!-- 一级菜单(有子菜单的) -->
+        <li nz-submenu *ngIf="menu.children && menu.children.length" [nzTitle]="menu.name"
+          [nzIcon]="menu.icon ? menu.icon : 'folder'">
+          <ul>
+            <li nz-menu-item nzMatchRouter *ngFor="let item of menu.children">
+              <i nz-icon [nzType]="item.icon ? item.icon : 'file'"></i>
+              <span>{{item.name}}</span>
+            </li>
+          </ul>
+        </li>
+      </ng-container>
+      <!-- 循环菜单列表结束 -->
+      <!-- <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/welcome">Welcome</a>
@@ -31,7 +50,7 @@
             <a>Basic Form</a>
           </li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </nz-sider>
   <nz-layout>
