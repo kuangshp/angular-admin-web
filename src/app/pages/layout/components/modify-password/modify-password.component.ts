@@ -8,9 +8,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrls: ['./modify-password.component.scss'],
 })
 export class ModifyPasswordComponent implements OnInit {
-  validateForm: FormGroup;
+  validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private message: NzMessageService) {
+  constructor(private fb: FormBuilder, private message: NzMessageService) {}
+
+  ngOnInit(): void {
     this.validateForm = this.fb.group({
       oldPassword: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required]],
@@ -18,17 +20,14 @@ export class ModifyPasswordComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   handleOk() {
     if (this.validateForm.valid) {
       const postData = this.validateForm.value;
       return new Promise((resolve) => {
         console.log(postData);
         resolve(true);
-        // this.userService.modifyPassword$(postData).subscribe((data: Record<string, any>) => {
+        // this.userService.modifyPassword$(postData).subscribe((data) => {
         //   const { code, message, result } = data;
-        //   console.log(result);
         //   if (Object.is(code, 0)) {
         //     this.message.create('success', message);
         //     resolve(true);
@@ -43,11 +42,21 @@ export class ModifyPasswordComponent implements OnInit {
       return false;
     }
   }
+  submitForm(): void {
+    for (const i in this.validateForm.controls) {
+      if (this.validateForm.controls.hasOwnProperty(i)) {
+        this.validateForm.controls[i].markAsDirty();
+        this.validateForm.controls[i].updateValueAndValidity();
+      }
+    }
+  }
 
   updateConfirmValidator(): void {
+    /** wait for refresh value */
     Promise.resolve().then(() => this.validateForm.controls.checkPassword.updateValueAndValidity());
   }
-  // 校验两次密码是否为一致
+
+  // 确定密码的时候校验两次密码是否一致
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
       return { required: true };
