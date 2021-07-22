@@ -58,8 +58,9 @@ export class ParamInterceptor implements HttpInterceptor {
         (event: any) => {
           if (event instanceof HttpResponse) {
             const status = event.status;
+            const body = event.body;
+            // 请求成功的时候
             if (status >= 200 && status < 300) {
-              const body = event.body;
               const currentUrl: string = event.url ?? '';
               const { code, message } = body;
               if (!Object.is(code, 0)) {
@@ -71,6 +72,7 @@ export class ParamInterceptor implements HttpInterceptor {
                   });
                 } else {
                   this.loggerService.error(currentUrl, '当前接口请求错误');
+                  // TODO是否要在这里弹出一个错误提示
                 }
               }
             }
