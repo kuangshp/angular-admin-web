@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { timeout } from 'rxjs/operators';
-import { fileObjectField, trimObject, urlObjectParams } from '@app/utils';
-import { ObjectType } from '@app/types';
-import { HTTP_TIMEOUT } from '@app/config';
+import { HTTP_TIMEOUT } from 'src/app/constants';
+import { object2str, trimObject } from 'src/app/utils';
 
+type ObjectType = Record<string, any>;
 @Injectable({
   providedIn: 'root',
 })
@@ -18,28 +18,23 @@ export class BaseService {
    * @param urlParams: {object} url配置参数
    * @param options:配置参数
    */
-  public get(
+  public get<T>(
     url: string,
-    urlParams?: any,
+    urlParams?: ObjectType,
     options?: {
       params?: ObjectType;
       headers?: ObjectType;
       responseType?: any;
     }
-  ): Observable<any> {
-    url = urlParams ? `${url}/?${urlObjectParams(urlParams)}` : url;
-    const { params, headers, responseType } = options || {
-      params: {},
-      headers: {},
-      responseType: 'json',
-    };
-    const $params = new HttpParams({ fromObject: params });
-    const $headers = new HttpHeaders(headers);
+  ): Observable<T> {
+    url = urlParams ? `${url}/?${object2str(urlParams)}` : url;
+    const $params: HttpParams = new HttpParams({ fromObject: options?.params ?? {} });
+    const $headers: HttpHeaders = new HttpHeaders(options?.headers ?? {});
     return this.http
-      .get(url, {
+      .get<T>(url, {
         headers: $headers,
         params: $params,
-        responseType,
+        responseType: options?.responseType,
       })
       .pipe(timeout(HTTP_TIMEOUT));
   }
@@ -50,26 +45,33 @@ export class BaseService {
    * @param body 请求体
    * @param options 附属内容
    */
-  public put(
+  public put<T>(
     url: string,
-    body: any | null,
+    id: string | number,
+    body: ObjectType | null,
     options?: {
       params?: ObjectType;
       headers?: ObjectType;
     }
-  ): Observable<any> {
-    const { params, headers } = options || {
-      params: {},
-      headers: {},
-    };
-    const $params = new HttpParams({ fromObject: params });
-    const $headers = new HttpHeaders(headers);
-    return this.http
-      .put(url, fileObjectField(trimObject(body)), {
-        headers: $headers,
-        params: $params,
-      })
-      .pipe(timeout(HTTP_TIMEOUT));
+  ): Observable<T> {
+    const $url = `${url}/${id}`;
+    const $params: HttpParams = new HttpParams({ fromObject: options?.params ?? {} });
+    const $headers: HttpHeaders = new HttpHeaders(options?.headers ?? {});
+    if (body && Object.keys(trimObject(body)).length) {
+      return this.http
+        .put<T>($url, body, {
+          headers: $headers,
+          params: $params,
+        })
+        .pipe(timeout(HTTP_TIMEOUT));
+    } else {
+      return this.http
+        .put<T>($url, null, {
+          headers: $headers,
+          params: $params,
+        })
+        .pipe(timeout(HTTP_TIMEOUT));
+    }
   }
 
   /**
@@ -78,27 +80,28 @@ export class BaseService {
    * @param body 请求体
    * @param options 附属条件
    */
-  public patch(
+  public patch<T>(
     url: string,
-    body?: any | null,
+    id: string | number,
+    body?: ObjectType | null,
     options?: {
       params?: ObjectType;
       headers?: ObjectType;
     }
-  ): Observable<any> {
-    const { params, headers } = options || { params: {}, headers: {} };
-    const $params = new HttpParams({ fromObject: params });
-    const $headers = new HttpHeaders(headers);
-    if (body && Object.keys(fileObjectField(trimObject(body))).length) {
+  ): Observable<T> {
+    const $url: string = `${url}/${id}`;
+    const $params: HttpParams = new HttpParams({ fromObject: options?.params ?? {} });
+    const $headers: HttpHeaders = new HttpHeaders(options?.headers ?? {});
+    if (body && Object.keys(trimObject(body)).length) {
       return this.http
-        .patch(url, fileObjectField(trimObject(body)), {
+        .patch<T>($url, trimObject(body), {
           headers: $headers,
           params: $params,
         })
         .pipe(timeout(HTTP_TIMEOUT));
     } else {
       return this.http
-        .patch(url, {
+        .patch<T>($url, null, {
           headers: $headers,
           params: $params,
         })
@@ -112,23 +115,31 @@ export class BaseService {
    * @param body 请求体
    * @param options 附属条件
    */
-  public post(
+  public post<T>(
     url: string,
-    body: any | null,
+    body: ObjectType | null,
     options?: {
       params?: ObjectType;
       headers?: ObjectType;
     }
-  ): Observable<any> {
-    const { params, headers } = options || { params: {}, headers: {} };
-    const $params = new HttpParams({ fromObject: params });
-    const $headers = new HttpHeaders(headers);
-    return this.http
-      .post(url, body, {
-        headers: $headers,
-        params: $params,
-      })
-      .pipe(timeout(HTTP_TIMEOUT));
+  ): Observable<T> {
+    const $params: HttpParams = new HttpParams({ fromObject: options?.params ?? {} });
+    const $headers: HttpHeaders = new HttpHeaders(options?.headers ?? {});
+    if (body && Object.keys(trimObject(body)).length) {
+      return this.http
+        .post<T>(url, trimObject(body), {
+          headers: $headers,
+          params: $params,
+        })
+        .pipe(timeout(HTTP_TIMEOUT));
+    } else {
+      return this.http
+        .post<T>(url, null, {
+          headers: $headers,
+          params: $params,
+        })
+        .pipe(timeout(HTTP_TIMEOUT));
+    }
   }
 
   /**
@@ -136,18 +147,19 @@ export class BaseService {
    * @param url url地址
    * @param options 附属条件
    */
-  public delete(
+  public delete<T>(
     url: string,
+    id: string | number,
     options?: {
       params?: ObjectType;
       headers?: ObjectType;
     }
-  ): Observable<any> {
-    const { params, headers } = options || { params: {}, headers: {} };
-    const $params = new HttpParams({ fromObject: params });
-    const $headers = new HttpHeaders(headers);
+  ): Observable<T> {
+    const $url: string = `${url}/${id}`;
+    const $params: HttpParams = new HttpParams({ fromObject: options?.params ?? {} });
+    const $headers: HttpHeaders = new HttpHeaders(options?.headers ?? {});
     return this.http
-      .delete(url, {
+      .delete<T>($url, {
         headers: $headers,
         params: $params,
       })

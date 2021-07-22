@@ -21,6 +21,7 @@
     "@angular/router": "~12.1.2",
     "moment": "^2.29.1",
     "ng-zorro-antd": "^12.0.1",
+    "qs": "^6.10.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -33,6 +34,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.31.0",
