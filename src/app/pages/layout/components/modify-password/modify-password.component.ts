@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-modify-password',
@@ -10,7 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class ModifyPasswordComponent implements OnInit {
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private message: NzMessageService) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -20,7 +19,7 @@ export class ModifyPasswordComponent implements OnInit {
     });
   }
 
-  handleOk() {
+  handleOk(): Promise<boolean> | boolean {
     if (this.validateForm.valid) {
       const postData = this.validateForm.value;
       return new Promise((resolve) => {
@@ -38,11 +37,11 @@ export class ModifyPasswordComponent implements OnInit {
         // });
       });
     } else {
-      this.message.create('error', '请正确填写数据');
+      this.validateFormPanel();
       return false;
     }
   }
-  submitForm(): void {
+  validateFormPanel(): void {
     for (const i in this.validateForm.controls) {
       if (this.validateForm.controls.hasOwnProperty(i)) {
         this.validateForm.controls[i].markAsDirty();
