@@ -41,6 +41,7 @@ export class ModifyPasswordComponent implements OnInit {
       return false;
     }
   }
+  /**提交的时候校验 */
   validateFormPanel(): void {
     for (const i in this.validateForm.controls) {
       if (this.validateForm.controls.hasOwnProperty(i)) {
@@ -50,8 +51,8 @@ export class ModifyPasswordComponent implements OnInit {
     }
   }
 
+  /**更新密码的时候继续校验下面的二次密码 */
   updateConfirmValidator(): void {
-    /** wait for refresh value */
     Promise.resolve().then(() => this.validateForm.controls.checkPassword.updateValueAndValidity());
   }
 
