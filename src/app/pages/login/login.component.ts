@@ -6,6 +6,7 @@ import { userInfo, X_USER_TOKEN } from 'src/app/constants';
 import { ILoginDto } from 'src/app/dto/login/login.dto';
 import { LoginService } from 'src/app/services/login/login.service';
 import { storage } from 'src/app/utils';
+import { LoginVo } from 'src/app/vo/login/login.vo';
 
 @Component({
   selector: 'app-login',
@@ -36,10 +37,7 @@ export class LoginComponent implements OnInit {
       this.loginValidateForm.controls[i].updateValueAndValidity();
     }
     if (this.loginValidateForm.valid) {
-      storage.setItem(X_USER_TOKEN, JSON.stringify('1234567'));
-      storage.setItem(userInfo, JSON.stringify({ username: '张三' }));
-      this.loginService.loginApi(value).subscribe((data) => {
-        console.log(data, '登录成功');
+      this.loginService.loginApi(value).subscribe((data: LoginVo) => {
         const { code, message, result } = data;
         if (Object.is(code, 0)) {
           this.message.create('success', message);
