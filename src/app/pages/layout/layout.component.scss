@@ -31,11 +31,31 @@
 .sidebar-logo {
   position: relative;
   height: 64px;
-  padding-left: 24px;
+  // padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
   background: #001529;
   transition: all 0.3s;
+
+  .logo {
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .log1 {
+      width: 200px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .log2 {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
 }
 
 .sidebar-logo img {

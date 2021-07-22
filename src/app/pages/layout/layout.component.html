@@ -3,8 +3,12 @@
     [nzTrigger]="null">
     <div class="sidebar-logo">
       <a routerLink="/home">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Angular admin web</h1>
+        <!-- <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>Angular admin web</h1> -->
+        <div class="logo">
+          <div class="log1" [hidden]="isCollapsed"></div>
+          <div class="log2" [hidden]="!isCollapsed"></div>
+        </div>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
