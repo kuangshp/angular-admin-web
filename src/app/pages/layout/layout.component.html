@@ -36,11 +36,14 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
+      <!-- 左边图例 -->
       <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
           <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
         </span>
       </div>
+      <!-- 右边用户中心 -->
+      <app-user-profile></app-user-profile>
     </nz-header>
     <nz-content>
       <div class="inner-content">

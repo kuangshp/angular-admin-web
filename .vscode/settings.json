@@ -5,6 +5,7 @@
     "antd",
     "commitlint",
     "devkit",
+    "minlength",
     "sider",
     "stylelint",
     "submenu"
