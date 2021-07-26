@@ -13,6 +13,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { EffectsModule } from '@ngrx/effects';
+import { MenusEffect } from 'src/app/store/effects/menus.effect';
 @NgModule({
   entryComponents: [ModifyPasswordComponent],
   declarations: [LayoutComponent, UserProfileComponent, ModifyPasswordComponent],
@@ -27,6 +29,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     NzFormModule,
     NzMessageModule,
     NzInputModule,
+    EffectsModule.forFeature([MenusEffect]),
   ],
 })
 export class LayoutModule {}
