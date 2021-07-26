@@ -7,15 +7,22 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { X_USER_TOKEN } from '../constants';
-import { storage } from '../utils';
+import { MenusState } from '../store/reducers';
+import { IMenus, storage } from '../utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private router: Router) {}
+  menusList!: IMenus[];
+  constructor(private router: Router, private readonly store: Store<{ menus: MenusState }>) {
+    this.store.pipe(select('menus'), select('menusList')).subscribe((response: IMenus[]) => {
+      this.menusList = response;
+    });
+  }
   /**
    * @Author: 水痕
    * @Date: 2021-07-21 11:16:47
@@ -28,8 +35,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(route, state);
-    return this.checkLogin();
+    console.log(route, state.url);
+    return this.routerAuth(state);
   }
 
   /**
@@ -45,9 +52,33 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log(childRoute, state);
-    return this.checkLogin();
+    return this.routerAuth(state);
   }
 
+  /**
+   * @Author: 水痕
+   * @Date: 2021-07-26 17:19:48
+   * @LastEditors: 水痕
+   * @Description: 判断当前路由是否有权限
+   * @param {RouterStateSnapshot} state
+   * @return {*}
+   */
+  private routerAuth(state: RouterStateSnapshot): Observable<boolean> | boolean {
+    if (state.url && this.checkLogin) {
+      let url: string = state.url;
+      if (state.url.startsWith('/')) {
+        url = url.substring(1);
+      }
+      if (this.menusList.find((item: IMenus) => item.url === url)) {
+        return true;
+      } else if (url === 'home') {
+        return true;
+      } else {
+        this.router.navigateByUrl('/home');
+      }
+    }
+    return this.checkLogin;
+  }
   /**
    * @Author: 水痕
    * @Date: 2021-07-21 11:20:46
@@ -56,9 +87,9 @@ export class AuthGuard implements CanActivate, CanActivateChild {
    * @param {*}
    * @return {*}
    */
-  private checkLogin(): Observable<boolean> | boolean {
+  private get checkLogin(): Observable<boolean> | boolean {
     if (storage.getItem(X_USER_TOKEN)) {
-      return of(true);
+      return true;
     } else {
       this.router.navigateByUrl('/login');
       return false;

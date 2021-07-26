@@ -2,14 +2,14 @@ export default {
   code: 0,
   message: '请求成功',
   result: [
-    {
-      id: 1,
-      name: '文件中心',
-      parentId: -1,
-      sort: 1,
-      url: 'file',
-      icon: 'file',
-    },
+    // {
+    //   id: 1,
+    //   name: '文件中心',
+    //   parentId: -1,
+    //   sort: 1,
+    //   url: 'file',
+    //   icon: 'file',
+    // },
     {
       id: 2,
       name: '系统管理',
