@@ -27,7 +27,6 @@ export class ParamInterceptor implements HttpInterceptor {
     private readonly message: NzMessageService
   ) {
     this.baseUrl = environment.baseUrl;
-    console.log(environment, '===当前环境=');
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -43,11 +42,16 @@ export class ParamInterceptor implements HttpInterceptor {
       if (!storage.getItem(X_USER_TOKEN)) {
         console.log('没token跳转到登录页面');
         this.router.navigateByUrl('/login');
+        req = req.clone({
+          url,
+          headers: req.headers.set('Content-Type', 'application/json; charset=UTF-8'),
+        });
       } else {
         // 设置请求头
         req = req.clone({
           url,
           headers: req.headers
+            .set('Content-Type', 'application/json; charset=UTF-8')
             .set(X_USER_TOKEN, JSON.parse(storage.getItem(X_USER_TOKEN)))
             .set(X_ORG_ID, '2'),
         });
