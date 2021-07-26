@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { MenusService } from 'src/app/services/menus/menus.service';
 import { loadMenusStart } from 'src/app/store/actions';
@@ -19,8 +19,12 @@ export class LayoutComponent implements OnInit {
   constructor(
     private readonly menusService: MenusService,
     private readonly message: NzMessageService,
-    private readonly store: Store<{ person: MenusState }>
-  ) {}
+    private readonly store: Store<{ menus: MenusState }>
+  ) {
+    store.pipe(select('menus'), select('menusList')).subscribe((response: IMenus[]) => {
+      this.menusList = getTreeList(response);
+    });
+  }
 
   ngOnInit(): void {
     // this.initMenus();

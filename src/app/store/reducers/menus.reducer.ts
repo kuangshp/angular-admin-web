@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { IMenus } from 'src/app/utils';
 import { MenusVo } from 'src/app/vo/menus/menus.vo';
-import { loadMenusStart, loadMenusSuccess } from '../actions';
+import { loadMenusFail, loadMenusStart, loadMenusSuccess } from '../actions';
 
 export interface MenusState {
   menusList: IMenus[];
@@ -18,7 +18,10 @@ const _reducer = createReducer(
   }),
   on(loadMenusSuccess, (state: MenusState, { menus }: { menus: MenusVo }) => {
     console.log(menus, '获取到的菜单');
-    return { menusList: [...state.menusList] };
+    return { menusList: [...state.menusList, ...menus.result] };
+  }),
+  on(loadMenusFail, () => {
+    return { menusList: [] };
   })
 );
 
