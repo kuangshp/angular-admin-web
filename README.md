@@ -3,7 +3,7 @@
 - 1、下载代码
 
   ```shell
-  git clone git@github.com:kuangshp/ng9-ng-zorro-admin.git
+  git clone https://github.com/kuangshp/angular-admin-web.git
   ```
 
 - 2、安装依赖包
