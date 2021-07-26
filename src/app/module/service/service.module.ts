@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ParamInterceptor } from 'src/app/interceptors/param.interceptor';
+import { ResponseHandlerInterceptor } from 'src/app/interceptors/response.interceptor';
 import { LoggingInterceptor } from 'src/app/interceptors/logging.interceptor';
+import { ErrorHandlerInterceptor } from 'src/app/interceptors/error.interceptor';
+import { HeaderInterceptor } from 'src/app/interceptors/header.interceptor';
 
 @NgModule({
   declarations: [],
@@ -9,7 +11,17 @@ import { LoggingInterceptor } from 'src/app/interceptors/logging.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ParamInterceptor,
+      useClass: HeaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseHandlerInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
       multi: true,
     },
     {

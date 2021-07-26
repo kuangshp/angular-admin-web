@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { MenusVo } from 'src/app/vo/menus/menus.vo';
+import { IMenus } from 'src/app/utils';
 
 export enum MenusActionTypes {
   LOAD_MENUS_START = '开始获取菜单',
@@ -12,7 +12,7 @@ export const loadMenusStart = createAction(MenusActionTypes.LOAD_MENUS_START);
 // 成功获取菜单
 export const loadMenusSuccess = createAction(
   MenusActionTypes.LOAD_MENUS_SUCCESS,
-  props<{ menusVo: MenusVo }>()
+  props<{ menusVo: IMenus[] }>()
 );
 
 export const loadMenusFail = createAction(MenusActionTypes.LOAD_MENUS_FAIL);
