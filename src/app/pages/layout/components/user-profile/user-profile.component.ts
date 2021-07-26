@@ -38,6 +38,7 @@ export class UserProfileComponent implements OnInit {
   // 退出
   logout(): void {
     storage.clear();
+    window.sessionStorage.clear();
     this.router.navigateByUrl('/login');
   }
 }
