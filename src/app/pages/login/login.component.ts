@@ -17,6 +17,8 @@ import { LoginVo } from 'src/app/vo/login/login.vo';
 })
 export class LoginComponent implements OnInit {
   private isLogin: boolean = false;
+  loginValidateForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -31,7 +33,6 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  loginValidateForm!: FormGroup;
 
   ngOnInit() {
     this.loginValidateForm = this.fb.group({
