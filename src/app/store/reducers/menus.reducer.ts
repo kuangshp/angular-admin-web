@@ -16,7 +16,6 @@ const _reducer = createReducer(
     return { menusList: [] };
   }),
   on(loadMenusSuccess, (state: MenusState, { menusVo }: { menusVo: IMenus[] }) => {
-    console.log(menusVo, '获取到的菜单');
     return { menusList: [...state.menusList, ...menusVo] };
   }),
   on(loadMenusFail, () => {

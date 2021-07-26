@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { MenusService } from 'src/app/services/menus/menus.service';
+// import { IMenus } from 'src/app/utils';
 import { loadMenusStart, loadMenusSuccess } from '../actions';
 
 @Injectable()
