@@ -1,11 +1,14 @@
 {
   "cSpell.words": [
     "Parens",
+    "Serializability",
     "YYYYMMDD",
     "antd",
     "commitlint",
     "devkit",
+    "localstorage",
     "minlength",
+    "ngrx",
     "sider",
     "stylelint",
     "submenu",

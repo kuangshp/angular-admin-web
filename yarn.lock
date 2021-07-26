@@ -1367,6 +1367,27 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
 
+"@ngrx/effects@^12.3.0":
+  version "12.3.0"
+  resolved "https://registry.nlark.com/@ngrx/effects/download/@ngrx/effects-12.3.0.tgz#2d1ed8fba0fa9e4b6945efab8eacd7ffe83f0a96"
+  integrity sha1-LR7Y+6D6nktpRe+rjqzX/+g/CpY=
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store-devtools@^12.3.0":
+  version "12.3.0"
+  resolved "https://registry.nlark.com/@ngrx/store-devtools/download/@ngrx/store-devtools-12.3.0.tgz#dbb7e89289ab50ef51f4e72d346bb3db9bc4f2b8"
+  integrity sha1-27fokomrUO9R9OctNGuz25vE8rg=
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store@^12.3.0":
+  version "12.3.0"
+  resolved "https://registry.nlark.com/@ngrx/store/download/@ngrx/store-12.3.0.tgz#e6361dafe2b06c4a5f968807e4c1b41a4dd5809e"
+  integrity sha1-5jYdr+KwbEpflogH5MG0Gk3VgJ4=
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@12.1.2":
   version "12.1.2"
   resolved "https://registry.nlark.com/@ngtools/webpack/download/@ngtools/webpack-12.1.2.tgz#ac828799c1b968391e73eb9db17367bc2219cfc7"
@@ -3237,6 +3258,11 @@ deep-is@^0.1.3:
   version "0.1.3"
   resolved "https://registry.npm.taobao.org/deep-is/download/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
+
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.npm.taobao.org/deepmerge/download/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha1-RNLqNnm49NT/ujPwPYZfwee/SVU=
 
 default-gateway@^4.2.0:
   version "4.2.0"
@@ -6091,6 +6117,14 @@ ng-zorro-antd@^12.0.1:
     date-fns "^2.10.0"
     tslib "^2.2.0"
 
+ngrx-store-localstorage@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.nlark.com/ngrx-store-localstorage/download/ngrx-store-localstorage-12.0.0.tgz#43489ed628265b4654a1eea6cad1f0bffa66a99e"
+  integrity sha1-Q0ie1igmW0ZUoe6mytHwv/pmqZ4=
+  dependencies:
+    deepmerge "^4.2.2"
+    tslib "^2.1.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.npm.taobao.org/nice-try/download/nice-try-1.0.5.tgz?cache=0&sync_timestamp=1614510157805&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnice-try%2Fdownload%2Fnice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -8876,7 +8910,7 @@ trough@^1.0.0:
   resolved "https://registry.nlark.com/trough/download/trough-1.0.5.tgz?cache=0&sync_timestamp=1625400708741&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftrough%2Fdownload%2Ftrough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha1-uLY5zvrX0LsqvTfUM/+Ck++l9AY=
 
-tslib@2.3.0, tslib@^2.0.0, tslib@^2.2.0:
+tslib@2.3.0, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.2.0:
   version "2.3.0"
   resolved "https://registry.nlark.com/tslib/download/tslib-2.3.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
   integrity sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=
