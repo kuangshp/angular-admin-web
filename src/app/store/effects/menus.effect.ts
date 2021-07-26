@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { MenusService } from 'src/app/services/menus/menus.service';
-// import { IMenus } from 'src/app/utils';
+import { IMenus } from 'src/app/utils';
 import { loadMenusStart, loadMenusSuccess } from '../actions';
 
 @Injectable()
@@ -17,10 +17,7 @@ export class MenusEffect {
       mergeMap(() => {
         return this.menusService.menusApi().pipe(
           // 处理请 成功返回的数据
-          map((menusVo: any) => {
-            console.log(menusVo, '11111');
-            return loadMenusSuccess({ menusVo: menusVo });
-          }),
+          map((menusVo: IMenus[]) => loadMenusSuccess({ menusVo: menusVo })),
           catchError(() => EMPTY)
         );
       })
