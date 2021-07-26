@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
   }
   // 登录事件
   submitForm({ value }: { value: ILoginDto }, ev: Event): void {
-    console.log(value, '登录数据');
     ev.preventDefault();
     for (const i in this.loginValidateForm.controls) {
       this.loginValidateForm.controls[i].markAsDirty();

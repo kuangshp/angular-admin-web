@@ -67,7 +67,7 @@ export class ParamInterceptor implements HttpInterceptor {
             // 请求成功的时候
             if (status >= 200 && status < 300) {
               const currentUrl: string = event.url ?? '';
-              const { code, message, result } = body;
+              const { code, message } = body;
               if (!Object.is(code, 0)) {
                 // token失效跳转到登录页面
                 if (Object.is(code, 10042)) {
@@ -79,8 +79,6 @@ export class ParamInterceptor implements HttpInterceptor {
                   this.loggerService.error(currentUrl, '当前接口请求错误');
                   // TODO是否要在这里弹出一个错误提示
                 }
-              } else {
-                console.log(result, '成功请求数据');
               }
             }
           }

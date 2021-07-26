@@ -16,7 +16,6 @@ const _reducer = createReducer(
     return { loginInfo: null };
   }),
   on(loadLoginSuccess, (state: LoginState, { loginVo }: { loginVo: LoginResultVo }) => {
-    console.log(loginVo);
     return { loginInfo: { ...state.loginInfo, ...loginVo } };
   })
 );
