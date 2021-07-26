@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { LoginState } from 'src/app/store/reducers';
 import { storage } from 'src/app/utils';
-import { LoginResultVo } from 'src/app/vo/login/login.vo';
+import { LoginVo } from 'src/app/vo/login/login.vo';
 import { ModifyPasswordComponent } from '../modify-password/modify-password.component';
 
 @Component({
@@ -19,11 +19,9 @@ export class UserProfileComponent implements OnInit {
     private readonly modalService: NzModalService,
     private readonly store: Store<{ login: LoginState }>
   ) {
-    this.store
-      .pipe(select('login'), select('loginInfo'))
-      .subscribe((data: LoginResultVo | null) => {
-        this.username = data?.username ?? '';
-      });
+    this.store.pipe(select('login'), select('loginInfo')).subscribe((data: LoginVo | null) => {
+      this.username = data?.username ?? '';
+    });
   }
 
   ngOnInit(): void {}

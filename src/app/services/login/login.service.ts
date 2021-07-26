@@ -11,6 +11,6 @@ export class LoginService {
   constructor(private baseService: BaseService) {}
 
   loginApi(postData: ILoginDto): Observable<LoginVo> {
-    return this.baseService.post('admin/login', postData);
+    return this.baseService.post<LoginVo>('admin/login', postData);
   }
 }
