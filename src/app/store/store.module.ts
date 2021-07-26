@@ -15,8 +15,9 @@ import { reducers, metaReducers } from './store';
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
-        strictStateSerializability: true,
-        strictActionSerializability: true,
+        // 是否严格
+        strictStateSerializability: false,
+        strictActionSerializability: false,
       },
     }),
     StoreDevtoolsModule.instrument({

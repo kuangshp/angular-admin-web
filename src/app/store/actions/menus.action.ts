@@ -12,7 +12,7 @@ export const loadMenusStart = createAction(MenusActionTypes.LOAD_MENUS_START);
 // 成功获取菜单
 export const loadMenusSuccess = createAction(
   MenusActionTypes.LOAD_MENUS_SUCCESS,
-  props<{ menus: MenusVo }>()
+  props<{ menusVo: MenusVo }>()
 );
 
 export const loadMenusFail = createAction(MenusActionTypes.LOAD_MENUS_FAIL);

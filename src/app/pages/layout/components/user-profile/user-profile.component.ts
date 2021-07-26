@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { LoginState } from 'src/app/store/reducers';
 import { storage } from 'src/app/utils';
+import { LoginResultVo } from 'src/app/vo/login/login.vo';
 import { ModifyPasswordComponent } from '../modify-password/modify-password.component';
 
 @Component({
@@ -10,8 +13,18 @@ import { ModifyPasswordComponent } from '../modify-password/modify-password.comp
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  username: string = 'admin';
-  constructor(private router: Router, private readonly modalService: NzModalService) {}
+  username: string | undefined;
+  constructor(
+    private router: Router,
+    private readonly modalService: NzModalService,
+    private readonly store: Store<{ login: LoginState }>
+  ) {
+    this.store
+      .pipe(select('login'), select('loginInfo'))
+      .subscribe((data: LoginResultVo | null) => {
+        this.username = data?.username ?? '';
+      });
+  }
 
   ngOnInit(): void {}
   // 修改密码

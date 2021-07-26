@@ -1,16 +1,18 @@
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { counterReducer, menusReducer, MenusState } from './reducers';
+import { counterReducer, loginReducer, LoginState, menusReducer, MenusState } from './reducers';
 // 项目中全部的状态
 export interface State {
   menus: MenusState;
   count: number;
+  login: LoginState;
 }
 
 // 全部的reducer函数
 export const reducers: ActionReducerMap<State> = {
   menus: menusReducer,
   count: counterReducer,
+  login: loginReducer,
 };
 
 export function localStorageSyncReducer(reducer: ActionReducer<State>): ActionReducer<State> {

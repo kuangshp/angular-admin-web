@@ -17,7 +17,7 @@ export class MenusEffect {
       mergeMap(() => {
         return this.menusService.menusApi().pipe(
           // 处理请 成功返回的数据
-          map((menus: MenusVo) => loadMenusSuccess({ menus })),
+          map((menusVo: MenusVo) => loadMenusSuccess({ menusVo })),
           catchError(() => EMPTY)
         );
       })
