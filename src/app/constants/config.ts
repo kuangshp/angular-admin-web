@@ -1,5 +1,5 @@
 export const baseName = 'admin-web';
-export const X_USER_TOKEN = 'X-User-Token';
+export const X_USER_TOKEN = 'token';
 export const userInfo = 'userInfo';
 export const X_ORG_ID = 'x-org-id';
 export const X_ORIGIN = 'x-origin';

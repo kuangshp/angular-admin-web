@@ -6,7 +6,7 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 // 获取环境配置项目
@@ -60,14 +60,14 @@ export class ParamInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       tap(
-        (event: any) => {
+        (event: any): any => {
           if (event instanceof HttpResponse) {
             const status = event.status;
             const body = event.body;
             // 请求成功的时候
             if (status >= 200 && status < 300) {
               const currentUrl: string = event.url ?? '';
-              const { code, message } = body;
+              const { code, message, result } = body;
               if (!Object.is(code, 0)) {
                 // token失效跳转到登录页面
                 if (Object.is(code, 10042)) {
@@ -79,6 +79,9 @@ export class ParamInterceptor implements HttpInterceptor {
                   this.loggerService.error(currentUrl, '当前接口请求错误');
                   // TODO是否要在这里弹出一个错误提示
                 }
+              } else {
+                console.log('进来了');
+                return of(result);
               }
             }
           }
