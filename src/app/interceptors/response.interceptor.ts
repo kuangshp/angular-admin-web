@@ -40,6 +40,7 @@ export class ResponseHandlerInterceptor implements HttpInterceptor {
                 });
               } else {
                 this.loggerService.error(currentUrl, '当前接口请求错误');
+                this.message.error(message);
                 // TODO是否要在这里弹出一个错误提示
               }
               return false;
