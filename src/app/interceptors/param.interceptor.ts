@@ -27,6 +27,7 @@ export class ParamInterceptor implements HttpInterceptor {
     private readonly message: NzMessageService
   ) {
     this.baseUrl = environment.baseUrl;
+    console.log(environment, '===当前环境=');
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
