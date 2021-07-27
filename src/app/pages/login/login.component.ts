@@ -16,7 +16,7 @@ import { LoginVo } from 'src/app/vo/login/login.vo';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  private isLogin: boolean = false;
+  private isClickLogin: boolean = false;
   loginValidateForm!: FormGroup;
 
   constructor(
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.store.pipe(select('login'), select('loginInfo')).subscribe((response: LoginVo | null) => {
       console.log(response, '订阅了登录信息');
-      if (response && this.isLogin) {
+      if (response && this.isClickLogin) {
         storage.setItem(X_USER_TOKEN, JSON.stringify(response.token));
         this.router.navigate(['/home']);
       }
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.loginValidateForm.controls[i].updateValueAndValidity();
     }
     if (this.loginValidateForm.valid) {
-      this.isLogin = true;
+      this.isClickLogin = true;
       this.store.dispatch(loadLoginStart(value));
       // this.loginService.loginApi(value).subscribe((result: LoginVo) => {
       //   storage.setItem(X_USER_TOKEN, JSON.stringify(result.token));
