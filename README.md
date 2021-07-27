@@ -17,3 +17,10 @@
   ```shell
   npm run start
   ```
+
+* 4、项目的中的接口对接的后端[项目地址](https://github.com/kuangshp/nestjs-mysql-api)
+* 5、登录界面
+  ![](./1627345432052.jpg)
+
+* 6、里面界面
+  ![](./1627345462187.jpg)
