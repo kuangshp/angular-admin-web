@@ -4,7 +4,7 @@ import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { ILoginDto } from 'src/app/dto/login/login.dto';
 import { LoginService } from 'src/app/services/login/login.service';
-import { LoginVo } from 'src/app/vo/login/login.vo';
+import { ILoginVo } from 'src/app/vo/login/login.vo';
 import { loadLoginStart, loadLoginSuccess } from '../actions';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class LoginEffect {
       mergeMap((loginDto: ILoginDto) => {
         return this.loginService.loginApi(loginDto).pipe(
           // 处理请 成功返回的数据
-          map((loginVo: LoginVo) => loadLoginSuccess({ loginVo })),
+          map((ILoginVo: ILoginVo) => loadLoginSuccess({ ILoginVo })),
           catchError(() => EMPTY)
         );
       })

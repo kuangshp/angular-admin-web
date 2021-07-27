@@ -1,9 +1,9 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { LoginVo } from 'src/app/vo/login/login.vo';
+import { ILoginVo } from 'src/app/vo/login/login.vo';
 import { loadLoginStart, loadLoginSuccess } from '../actions';
 
 export interface LoginState {
-  loginInfo: LoginVo | null;
+  loginInfo: ILoginVo | null;
 }
 
 export const initLoginState: LoginState = {
@@ -15,8 +15,8 @@ const _reducer = createReducer(
   on(loadLoginStart, () => {
     return { loginInfo: null };
   }),
-  on(loadLoginSuccess, (state: LoginState, { loginVo }: { loginVo: LoginVo }) => {
-    return { loginInfo: { ...state.loginInfo, ...loginVo } };
+  on(loadLoginSuccess, (state: LoginState, { ILoginVo }: { ILoginVo: ILoginVo }) => {
+    return { loginInfo: { ...state.loginInfo, ...ILoginVo } };
   })
 );
 

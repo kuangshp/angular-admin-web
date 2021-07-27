@@ -8,7 +8,7 @@ import { ILoginDto } from 'src/app/dto/login/login.dto';
 import { loadLoginStart } from 'src/app/store/actions';
 import { LoginState } from 'src/app/store/reducers';
 import { storage } from 'src/app/utils';
-import { LoginVo } from 'src/app/vo/login/login.vo';
+import { ILoginVo } from 'src/app/vo/login/login.vo';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     // private readonly loginService: LoginService,
     private readonly store: Store<{ login: LoginState }>
   ) {
-    this.store.pipe(select('login'), select('loginInfo')).subscribe((response: LoginVo | null) => {
+    this.store.pipe(select('login'), select('loginInfo')).subscribe((response: ILoginVo | null) => {
       console.log(response, '订阅了登录信息');
       if (response && this.isClickLogin) {
         storage.setItem(X_USER_TOKEN, JSON.stringify(response.token));
@@ -50,11 +50,11 @@ export class LoginComponent implements OnInit {
     if (this.loginValidateForm.valid) {
       this.isClickLogin = true;
       this.store.dispatch(loadLoginStart(value));
-      // this.loginService.loginApi(value).subscribe((result: LoginVo) => {
+      // this.loginService.loginApi(value).subscribe((result: ILoginVo) => {
       //   storage.setItem(X_USER_TOKEN, JSON.stringify(result.token));
       //   storage.setItem(userInfo, JSON.stringify(result));
       //   // 将登录信息存储到ngrx中
-      //   this.store.dispatch(loadLoginSuccess({ loginVo: result }));
+      //   this.store.dispatch(loadLoginSuccess({ ILoginVo: result }));
       //   // 跳转到首页
       //   this.router.navigate(['/home']);
       // });

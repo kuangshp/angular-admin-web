@@ -1,6 +1,6 @@
 import { SharedVo } from '../base.vo';
 
-export interface LoginVo extends SharedVo {
+export interface ILoginVo extends SharedVo {
   mobile: string;
   email: string;
   username: string;
@@ -15,4 +15,4 @@ export interface LoginVo extends SharedVo {
   token: string;
 }
 
-// export interface LoginVo extends BaseVo<LoginResultVo> {}
+// export interface ILoginVo extends BaseVo<LoginResultVo> {}

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ILoginDto } from 'src/app/dto/login/login.dto';
-import { LoginVo } from 'src/app/vo/login/login.vo';
+import { ILoginVo } from 'src/app/vo/login/login.vo';
 
 export enum LoginActionTypes {
   LOAD_LOGIN_START = '开始登录',
@@ -11,7 +11,7 @@ export const loadLoginStart = createAction(LoginActionTypes.LOAD_LOGIN_START, pr
 
 export const loadLoginSuccess = createAction(
   LoginActionTypes.LOAD_LOGIN_SUCCESS,
-  props<{ loginVo: LoginVo }>()
+  props<{ ILoginVo: ILoginVo }>()
 );
 
 export const loadLoginFail = createAction(LoginActionTypes.LOAD_LOGIN_FAIL);
