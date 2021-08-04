@@ -5,7 +5,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
@@ -34,11 +34,6 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         loadChildren: () => import('./pages/setting/setting.module').then((m) => m.SettingModule),
       },
-      {
-        path: '**',
-        pathMatch: 'full',
-        redirectTo: '/home',
-      },
     ],
   },
   {
@@ -46,9 +41,9 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: '',
+    path: '**',
     pathMatch: 'full',
-    redirectTo: '/login',
+    redirectTo: '/home',
   },
 ];
 
