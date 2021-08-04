@@ -5,7 +5,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
@@ -44,6 +44,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/login',
   },
 ];
 
