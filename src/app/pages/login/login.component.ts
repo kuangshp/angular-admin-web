@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { X_USER_TOKEN } from 'src/app/constants';
 import { ILoginDto } from 'src/app/dto/login/login.dto';
+import { TitleService } from 'src/app/services/tools/title/title.service';
 // import { LoginService } from 'src/app/services/login/login.service';
 import { loadLoginStart } from 'src/app/store/actions';
 import { LoginState } from 'src/app/store/reducers';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private readonly titleService: Title,
+    private readonly titleService: TitleService,
     // private readonly loginService: LoginService,
     private readonly store: Store<{ login: LoginState }>
   ) {
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
-    this.titleService.setTitle('登录');
+    this.titleService.setTitle();
   }
   // 登录事件
   submitForm({ value }: { value: ILoginDto }, ev: Event): void {

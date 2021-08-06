@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    data: { title: '登录页面' },
   },
 ];
 
