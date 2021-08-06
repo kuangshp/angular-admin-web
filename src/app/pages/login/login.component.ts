@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { X_USER_TOKEN } from 'src/app/constants';
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private readonly titleService: Title,
     // private readonly loginService: LoginService,
     private readonly store: Store<{ login: LoginState }>
   ) {
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
+    this.titleService.setTitle('登录');
   }
   // 登录事件
   submitForm({ value }: { value: ILoginDto }, ev: Event): void {
