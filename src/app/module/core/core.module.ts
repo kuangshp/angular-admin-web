@@ -11,7 +11,7 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { AuthGuard } from '../../auth/auth.guard';
 import { ServiceModule } from '../service/service.module';
-import { PagesModule } from 'src/app/pages/pages.module';
+import { PagesModule } from 'src/app/views/pages.module';
 registerLocaleData(zh);
 
 @NgModule({
