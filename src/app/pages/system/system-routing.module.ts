@@ -13,14 +13,17 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+    data: { title: '账号管理' },
   },
   {
     path: 'role',
     component: RoleComponent,
+    data: { title: '角色管理' },
   },
   {
     path: 'access',
     component: AccessComponent,
+    data: { title: '资源管理' },
   },
 ];
 
