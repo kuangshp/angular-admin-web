@@ -45,6 +45,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
         }
         return throwError(error);
       }),
+      // 重试3次
       retry(3)
     );
   }
