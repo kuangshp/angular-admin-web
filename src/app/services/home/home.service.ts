@@ -10,6 +10,6 @@ export class HomeService {
 
   // 测试接口
   homeApi(): Observable<any> {
-    return this.baseService.get('admin/activity');
+    return this.baseService.get('admin/account');
   }
 }
