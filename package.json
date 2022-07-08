@@ -22,7 +22,7 @@
     "@ngrx/effects": "^12.3.0",
     "@ngrx/store": "^12.3.0",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "ng-zorro-antd": "^12.0.1",
     "ngrx-store-localstorage": "^12.0.0",
     "qs": "^6.10.1",
